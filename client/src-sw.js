@@ -1,5 +1,5 @@
 const { offlineFallback, warmStrategyCache } = require('workbox-recipes');
-const { CacheFirst } = require('workbox-strategies');
+const { CacheFirst, StaleWhileRevalidate } = require('workbox-strategies');
 const { registerRoute } = require('workbox-routing');
 const { CacheableResponsePlugin } = require('workbox-cacheable-response');
 const { ExpirationPlugin } = require('workbox-expiration');
@@ -26,21 +26,13 @@ warmStrategyCache({
 
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
-const paths = ['style','script','worker'];
 
-
-
-
-// registerRoute();
 
 registerRoute(
-  // Here we define the callback function that will filter the requests we want to cache (in this case, JS and CSS files)
   ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
   new StaleWhileRevalidate({
-    // Name of the cache storage.
     cacheName: 'asset-cache',
     plugins: [
-      // This plugin will cache responses with these headers to a maximum-age of 30 days
       new CacheableResponsePlugin({
         statuses: [0, 200],
       }),
@@ -48,11 +40,6 @@ registerRoute(
   })
 );
 
-// also need to refferrrence whatever destination is being sought - part of request object being injected below - value from  request.destination
-
-
-// request.destination {request} -
-// registerRoute() method - supply caching way in other words telling Webpack how to save any assets in these routes ?
 
 
 registerRoute( ({ request }) => variableForArrayHere.ARRAY_METHOD_HERE(variableForDestinationHere),

@@ -14,7 +14,7 @@ module.exports = () => {
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, '../client/dist'), //pathing issue? 
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -22,16 +22,16 @@ module.exports = () => {
         title: 'J.A.T.E',
       }),
       new InjectManifest ({
-        strategies: 'injectManifest', // not sure if this is needed.
-        swSrc: './src-sw.js',
-        swDest: 'src-sw.js', // not sure if this is correct way.
+        strategies: 'injectManifest', 
+        swSrc: "./src-sw.js",
+        swDest: "src-sw.js", //not liking this on startup?
       }),
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
         name: 'Just Another Text Editor',
         short_name: 'J.A.T.E',
-        description: 'This is an app that creates a text editor.', // just placeholder for now.
+        description: 'This is an app that creates a text editor.',
         background_color: '#225ca3',
         theme_color: '#225ca3',
         start_url: '/',
@@ -39,7 +39,7 @@ module.exports = () => {
         icons: [{
           src: path.resolve('src/images/logo.png'),
           sizes: [96, 128, 192, 256, 384, 512],
-          destination: path.join('assets', 'icons'), // not sure if this is right either going off Garys notes for this assignment.
+          destination: path.join('assets', 'icons'),
         }]
       }),
   
