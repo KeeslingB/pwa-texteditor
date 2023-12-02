@@ -14,7 +14,7 @@ module.exports = () => {
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist'), //pathing issue? 
+      path: path.resolve(__dirname, '../dist'), //pathing issue? 
     },
     plugins: [
 
@@ -38,13 +38,11 @@ module.exports = () => {
         theme_color: '#225ca3',
         start_url: './',
         publicPath: './',
-        icons: [
-          {
+        icons: [{
           src: path.resolve('src/images/logo.png'),
           sizes: [96, 128, 192, 256, 384, 512],
           destination: path.join('assets', 'icons'),
-        },
-      ],
+        }]
       }),
     ],
 
