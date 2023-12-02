@@ -20,7 +20,6 @@ export const putDb = async (content) => {
   
   //variable for replacing database with uppercase
 
-
   const OPEN_DB = await openDB(DB_NAME, 1);
   const YOUR_TX = OPEN_DB.transaction(DB_NAME, 'readwrite');
   const YOUR_STORE = YOUR_TX.objectStore(DB_NAME);

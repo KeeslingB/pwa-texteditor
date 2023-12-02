@@ -3,7 +3,7 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
-// TODO: Add and configure workbox plugins for a service worker and manifest file.
+
 
 module.exports = () => {
   return {
@@ -14,18 +14,20 @@ module.exports = () => {
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, '../client/dist'), //pathing issue? 
+      path: path.resolve(__dirname, 'dist'), //pathing issue? 
     },
     plugins: [
+
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'J.A.T.E',
       }),
+
       new InjectManifest ({
-        strategies: 'injectManifest', 
         swSrc: "./src-sw.js",
-        swDest: "src-sw.js", //not liking this on startup?
+        swDest: "src-sw.js", 
       }),
+
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
@@ -34,15 +36,16 @@ module.exports = () => {
         description: 'This is an app that creates a text editor.',
         background_color: '#225ca3',
         theme_color: '#225ca3',
-        start_url: '/',
-        publicPath: '/',
-        icons: [{
+        start_url: './',
+        publicPath: './',
+        icons: [
+          {
           src: path.resolve('src/images/logo.png'),
           sizes: [96, 128, 192, 256, 384, 512],
           destination: path.join('assets', 'icons'),
-        }]
+        },
+      ],
       }),
-  
     ],
 
     module: {
