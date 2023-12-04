@@ -17,8 +17,8 @@ Huge Help from our TA Gary for supplying a repo made for helping with the assign
 
 The following animation demonstrates the application functionality:
 
-screenshot here
+Github Repo [Here](https://github.com/KeeslingB)
 
+Heroku app Deployed [Here](https://pwa-textbox-a72186a8d8b5.herokuapp.com/) 
 
-heroku app deployed url here
 
