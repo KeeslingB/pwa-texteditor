@@ -19,7 +19,6 @@ The following animation demonstrates the application functionality:
 
 screenshot here
 
-video walkthrough url here
 
 heroku app deployed url here
 

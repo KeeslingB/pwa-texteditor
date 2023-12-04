@@ -14,8 +14,9 @@ module.exports = () => {
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, '../dist'), //pathing issue? 
+      path: path.resolve(__dirname, 'dist'), 
     },
+
     plugins: [
 
       new HtmlWebpackPlugin({
@@ -43,7 +44,7 @@ module.exports = () => {
           sizes: [96, 128, 192, 256, 384, 512],
           destination: path.join('assets', 'icons'),
         }]
-      }),
+      })
     ],
 
     module: {
